@@ -4,7 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shalimar&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Shalimar&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital@1&display=swap" rel="stylesheet">
+    <meta property="og:image" content="./ToDoList.png"/>
+    <meta name="description" content="To Do List for future ">
+    <title>To Do List</title>
 </head>
 <style type="text/css">
     body{
@@ -13,7 +24,9 @@
     #header{
         text-align: center;
         color: white;
-        font-size: 1.7vw;
+        padding: 20px 0 20px 0;
+        font-size: 7vw;
+        font-family: 'Dancing Script',Verdana, sans-serif, cursive;
     }
     #container{
         width: 70vw;
@@ -21,6 +34,7 @@
         background-color: #F0DED0;
         border-radius: 2%;
         margin: auto;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; 
     }
     #task{
         display: flex;
@@ -31,10 +45,16 @@
         width: 80%;
         height: 30px;
         border-radius: 5px;
-        border: 2px solid gray;
+        border: 2px solid #AE887B;
         margin: 0 1% 0 0;
         font-size: 15px;
         font-weight: bold;
+    }
+    #task input:focus{
+        outline: #AE887B;
+    }
+    #task input::placeholder{
+        color: #AE887B;
     }
     #task button{
         color: white;
@@ -46,10 +66,12 @@
         font-size: 16px;
         background-color: #AE887B;
         font-weight: bold;
-        transition: 1.2s;
+        transition: 1s;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     }
     #task button:hover{
-        background-color: rgba(0, 0, 255, 0.621);
+        background-color: #c09587;
+        /* background-color: rgba(0, 0, 255, 0.621); */
     }
     #information{
         display: flex;
@@ -68,9 +90,11 @@
         border-width: 3px;
         margin: 1% 0 1% 0;
         background-color: #AE887B;
+        background: linear-gradient(90deg,#85675d 0%,#c09587 100%);
         /* background: linear-gradient(90deg,rgb(58, 7, 154) 0%,rgb(84, 8, 225) 100%); */
         padding: 0 1% 0 1%;
         word-break: break-all;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
     }
     .list .text {
         cursor: pointer;
@@ -80,6 +104,7 @@
         display: flex;
         align-items: center;
         padding: 1%;
+        font-family: 'Cormorant Garamond', serif;
     }
     .butn{
         display: flex;
@@ -98,14 +123,13 @@
     }
     .list:hover{
         transform: scale(1.02);
-        background: linear-gradient(90deg,rgb(71, 9, 187) 0%,rgb(91, 8, 246) 100%);
+        background-color: #AE887B;
+        /* background: linear-gradient(90deg,rgb(71, 9, 187) 0%,rgb(91, 8, 246) 100%); */
     }
 </style>
 <body>
     <div id="header">
-        <h1>
-            To do List
-        </h1>
+        To do List
     </div>
     <div id="container">
         <div id="task">
