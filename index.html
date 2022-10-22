@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style type="text/css">
+    body{
+        background-color: #C3C1AB;
+    }
+    #header{
+        text-align: center;
+        color: white;
+        font-size: 1.7vw;
+    }
+    #container{
+        width: 70vw;
+        min-height: 80vh;
+        background-color: #F0DED0;
+        border-radius: 2%;
+        margin: auto;
+    }
+    #task{
+        display: flex;
+        justify-content: center;
+        padding: 3% 3% 0 3%;
+    }
+    #task input{
+        width: 80%;
+        height: 30px;
+        border-radius: 5px;
+        border: 2px solid gray;
+        margin: 0 1% 0 0;
+        font-size: 15px;
+        font-weight: bold;
+    }
+    #task button{
+        color: white;
+        border: none;
+        min-width: 9%;
+        border-radius: 5px;
+        cursor: pointer;
+        outline: none;
+        font-size: 16px;
+        background-color: #AE887B;
+        font-weight: bold;
+        transition: 1.2s;
+    }
+    #task button:hover{
+        background-color: rgba(0, 0, 255, 0.621);
+    }
+    #information{
+        display: flex;
+	    flex-direction: column-reverse;
+        align-items: center;
+    }
+    .list{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 80%;
+        min-height: 45px;
+        border-radius: 5px;
+        border-color: black;
+        color: white;
+        border-width: 3px;
+        margin: 1% 0 1% 0;
+        background-color: #AE887B;
+        /* background: linear-gradient(90deg,rgb(58, 7, 154) 0%,rgb(84, 8, 225) 100%); */
+        padding: 0 1% 0 1%;
+        word-break: break-all;
+    }
+    .list .text {
+        cursor: pointer;
+        width: 100%;
+        min-height: 45px;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        padding: 1%;
+    }
+    .butn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        cursor: pointer;
+        padding: 0 1% 0 1%;
+        word-break: normal;
+        object-fit: scale-down;
+        margin: 2%;
+        border-radius: 5px;
+    }
+    .butn:hover{
+        transform: scale(1.2);
+    }
+    .list:hover{
+        transform: scale(1.02);
+        background: linear-gradient(90deg,rgb(71, 9, 187) 0%,rgb(91, 8, 246) 100%);
+    }
+</style>
+<body>
+    <div id="header">
+        <h1>
+            To do List
+        </h1>
+    </div>
+    <div id="container">
+        <div id="task">
+            <input id="textInput" type="text" placeholder="Task To Be Done...">
+            <button id="add" onclick="takeInfo()">Add</button>
+        </div>
+        <div id="information"></div>
+    </div>
+</body>
+</html>
+<script>
+    enterSubmit();// To work on "Enter" and ADD button as well
+
+    function enterSubmit() {
+        let input = document.getElementById("textInput");
+        input.addEventListener("keypress",function(event){
+            const task = document.getElementsByTagName("input")[0].value;
+            if(event.key==="Enter"){ //if Enter is pressed 
+                event.preventDefault(); // onclick method on button won't work
+                takeInfo(); 
+                return 0;
+            }
+        });
+    }
+    function takeInfo() {
+        const task = document.getElementsByTagName("input")[0].value;
+        document.getElementById("textInput").value=""; // clear input text
+        if(validText(task)){ // check if text is valid (not empty);
+            alert("Please Enter Task...");
+            return 0; // abandon that try to add invalid task
+        }
+        add(task); // if everything is OK adding given "task" (input);
+    }
+    function validText(string) { // checks input's validity
+        for(let i=0;i<string.length;i++)
+            if(string[i]!=' ') // if there is any charachter different than ' ' then its valid
+                return false;
+        return true;
+    }
+    function add(task){
+        let information = document.getElementById("information");
+        information.innerHTML+='<div class="list"><div class="text">'+task+'</div><div><img class="butn" src="./garbage.png" alt="remove" width=40px></div></div>';
+        let taskList = document.getElementsByClassName("butn"); // garbage icons
+        removeTask(taskList); // check if person is clicking on garbage icon
+        let text = document.getElementsByClassName("text"); // just text list
+        checkTask(text); // check if person is willing to press on text.
+    }
+    function removeTask(taskList) {
+        let size = taskList.length;
+        for(let i=0;i<size;i++) {
+            taskList[i].onclick=function(){
+                this.parentNode.parentNode.remove(); // if clicked delete whole task 
+            }
+        }
+    }
+    function checkTask(text) { // make line-through or not
+        for(let i=0;i<text.length;i++) {
+            text[i].onclick=function() {
+                if(this.style.textDecoration) // check if  it is already marked  
+                    this.style.removeProperty("text-decoration"); 
+                else
+                    this.style.textDecoration="line-through black 10%";
+            }
+        }
+    }
+</script>
