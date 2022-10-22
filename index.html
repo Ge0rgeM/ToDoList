@@ -49,6 +49,7 @@
         margin: 0 1% 0 0;
         font-size: 15px;
         font-weight: bold;
+        font-family: cursive;
     }
     #task input:focus{
         outline: #AE887B;
@@ -65,7 +66,8 @@
         outline: none;
         font-size: 16px;
         background-color: #AE887B;
-        font-weight: bold;
+        font-weight:300;
+        font-family: cursive;
         transition: 1s;
         box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     }
@@ -89,12 +91,16 @@
         color: white;
         border-width: 3px;
         margin: 1% 0 1% 0;
-        background-color: #AE887B;
         background: linear-gradient(90deg,#85675d 0%,#c09587 100%);
         /* background: linear-gradient(90deg,rgb(58, 7, 154) 0%,rgb(84, 8, 225) 100%); */
         padding: 0 1% 0 1%;
         word-break: break-all;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
+    }
+    .list:hover{
+        transform: scale(1.02);
+        background: linear-gradient(90deg,#85675d 0%,#dead9c 100%);
+        /* background: linear-gradient(90drgb(164, 127, 115)71, 9, 187) 0%,rgb(91, 8, 246) 100%); */
     }
     .list .text {
         cursor: pointer;
@@ -104,7 +110,7 @@
         display: flex;
         align-items: center;
         padding: 1%;
-        font-family: 'Cormorant Garamond', serif;
+        font-family: cursive;
     }
     .butn{
         display: flex;
@@ -121,10 +127,19 @@
     .butn:hover{
         transform: scale(1.2);
     }
-    .list:hover{
-        transform: scale(1.02);
-        background-color: #AE887B;
-        /* background: linear-gradient(90deg,rgb(71, 9, 187) 0%,rgb(91, 8, 246) 100%); */
+    @media screen and (width<=786px){
+        .list .text {
+            font-size: 13px;
+        }
+        .butn {
+            transform: scale(0.8);
+        }
+        .butn:hover{
+            transform: scale(0.9);
+        }
+        #header {
+            font-size: 10vw;
+        }
     }
 </style>
 <body>
